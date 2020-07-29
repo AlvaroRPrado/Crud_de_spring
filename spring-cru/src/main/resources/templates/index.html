@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sistema de cadastro de aluno</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	
+</head>
+<body>
+	<div class="container my-2">
+	<h1>Lista de aluno</h1>	
+	<a th:href = "@{/novoAluno}" class="btn btn-primary btn-sm mb-3"> Add Aluno </a>
+	
+		<table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th><a>Nome do aluno</a></th>
+					<th><a>Email</a></th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="aluno:${listAlunos}">
+					<td th:text="${aluno.nome}"></td>
+					<td th:text="${aluno.email}"></td>
+					
+					<td> <a th:href="@{/alterarAluno/{id}(id=${aluno.id})}" class="btn btn-primary">Alterar</a>
+					</td>
+					<td> <a th:href="@{/deletarAluno/{id}(id=${aluno.id})}" class="btn btn-danger">Deletar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
